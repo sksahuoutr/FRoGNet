@@ -1,0 +1,33 @@
+model:
+  in_channels: 3
+  mscnn_channels: [32, 32, 32]
+  kernel_sizes: [3, 5, 7]
+  d_model: 64
+  d_state: 16
+  rbme_layers: 1
+  gat_heads: 4
+  gat_layers: 2
+  knn_k: 8
+  dropout: 0.1
+
+data:
+  batch_size: 32
+  num_workers: 0
+  seq_len: 256
+  fs: 128
+  window_sec: 2.0
+  data_root: data
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  use_synthetic: true
+
+train:
+  task: detection          # detection | subtype
+  epochs: 10
+  lr: 0.001
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  device: cuda
+  checkpoint_dir: checkpoints
+  seed: 42
